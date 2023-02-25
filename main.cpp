@@ -3,15 +3,16 @@
 #include "gradebook.h"
 
 int main(int argc, char* argv[]) {
-    //inFile();
+    Gradebook mainGradebook;
+    mainGradebook.inFile(argv[1]);
     std::string input;
     std::cout<<"Welcome to your gradebook. Here are the commands you can do:";
     while (input != "end" && input != "End" && input != "END"){
         std::cout<<"\nShow Grade- \nShow Category Grade- \n"
                    "Show Single Grade- \nAdd Grade- \nChange Grade- \nEnd- \n";
         std::cin>>input;
-        if (input == "Show Grade"){
-
+        if (input == "ShowGrade"){
+            std::cout<<"Showing grade now" << std::endl;
         }
         else if (input == "Show Category Grade"){
 
@@ -29,7 +30,7 @@ int main(int argc, char* argv[]) {
 
         }
         else {
-            std::cout<<"Looks like you input something besides one of the allowed commands. Please try again.";
+            std::cout<<"Looks like you input something besides one of the allowed commands. Please try again." << std::endl;
         }
     }
 
