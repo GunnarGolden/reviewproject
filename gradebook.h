@@ -1,17 +1,23 @@
 #ifndef REVIEWPROJECT_GRADEBOOK_H
 #define REVIEWPROJECT_GRADEBOOK_H
+#include "category.h"
 #include <iostream>
 #include <vector>
-
+#include <utility>
+#include <string>
 
 class Gradebook {
 private:
-    std::vector<std::vector<int>> grades;
+    std::vector<Category> grades;
+    int totalPossible;
+    int totalGrade;
 
 public:
     Gradebook();
-    void inFile();
-    void outFile();
+    void calcTotalPossible();
+    void calcTotalGrade();
+    void inFile(std::string fileName);
+    void outFile(std::string fileName);
     void getOneGrade(int category, int assignmentNum);
     void getGrades();
     void getCategoryGrade(int category);
@@ -22,6 +28,5 @@ public:
 
 
 };
-
 
 #endif
