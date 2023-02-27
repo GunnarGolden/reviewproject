@@ -8,28 +8,35 @@ int main(int argc, char* argv[]) {
     mainGradebook.inFile(argv[1]);
     std::string input;
     std::cout<<"Welcome to your gradebook. ";
-    while (input != "end" && input != "End" && input != "END"){
-        std::cout<<"Here are your possible commands:\nGrade- \nCategory- \n"
-                   "Specific- \nAdd- \nChange- \nEnd- \n";
+    while (input != "end"){
+        std::cout<<"Here are your possible commands:\nGrade- This command gives you your whole grade in the class. \nCategory- This commands gives you your grade in a specific category\n"
+                   "Specific- This command gives you a single grade from a specific category and assignment\nAdd- This command adds a grade to your gradebook\n"
+                   "Change- This command changes an existing grade in your gradebook\nEnd- This command ends the program\n";
         std::cin>>input;
+        //loop that makes sure the string is all lowercase
         for (int i = 0 ; i < input.size() ; i++){
             input[i] = tolower(input[i]);
         }
+        //get total grade
         if (input == "grade"){
             std::cout<<"Showing grade now: " << std::endl;
-            float grade = mainGradebook.calcTotalGrade()/mainGradebook.calcTotalPossible();
-            grade = grade * 100;
+            float grade = mainGradebook.calcTotalGrade() / mainGradebook.calcTotalPossible();
+            grade = grade;
             std::cout<<grade<<"\n";
         }
+        //
         else if (input == "category"){
-
+            std::string category;
+            std::cout << "Which category would you like to find?" << std::endl;
+            std::cin >> category;
+            mainGradebook.getCategoryGrade(category);
         }
         else if (input == "specific"){
             std::string category;
             int assignmentNum;
-            std::cout << "Which category would you like to find? Ex. Lab" << std::endl;
+            std::cout << "Which category would you like to find? \nEx. Labs" << std::endl;
             std::cin >> category;
-            std::cout << "What is your order you wanna find for your category? Ex. Assignment 2 then input 2" << std::endl;
+            std::cout << "What is your order you wanna find for your category? \nEx. Assignments 2 then input 2" << std::endl;
             std::cin >> assignmentNum;
             mainGradebook.getOneGrade(category, assignmentNum);
         }
@@ -71,5 +78,6 @@ int main(int argc, char* argv[]) {
             std::cout<<"Looks like you input something besides one of the allowed commands. Please try again." << std::endl;
         }
     }
+    mainGradebook.outFile(argv[1]);
 
 }
