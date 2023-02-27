@@ -95,6 +95,7 @@ void Gradebook::outFile(std::string fileName){
 
 // function gives you the grade you have in a given category and assignment number
 void Gradebook::getOneGrade(std::string category, int assignmentNum){
+
     int num = 0;
     category[0] = toupper(category[0]);
     for (int i = 0;i < grades.size(); i++) {
@@ -105,7 +106,7 @@ void Gradebook::getOneGrade(std::string category, int assignmentNum){
     }
     std::string assignment = category + " " + std::to_string(assignmentNum);
 
-    std::cout << "Your grade for " << assignment << " is " << grades[num-1].categoryGrades[assignmentNum-1] << std::endl;
+    std::cout << "Your grade for " << assignment << " is " << grades[num].categoryGrades[assignmentNum-1] << std::endl;
 }
 
 //function gives you all grades from the category and category total
@@ -125,7 +126,7 @@ void Gradebook::getCategoryGrade(std::string category){
         totalC = totalC + stoi(grades[num].categoryGrades[j]);
         std::cout<<category<<" "<<j+1<<": "<<grades[num].categoryGrades[j]<<"\n";
     }
-    float categoryGrade = totalC;
+    float categoryGrade = totalC ;
     std::cout<<category<<" total grade: "<<categoryGrade<<"\n";
 
 }
