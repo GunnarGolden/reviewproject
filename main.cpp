@@ -9,6 +9,7 @@ int main(int argc, char* argv[]) {
     std::string input;
     std::cout<<"Welcome to your gradebook. ";
     while (input != "end"){
+        mainGradebook.test();
         std::cout<<"Here are your possible commands:\nGrade- This command gives you your whole grade in the class. \nCategory- This commands gives you your grade in a specific category\n"
                    "Specific- This command gives you a single grade from a specific category and assignment\nAdd- This command adds a grade to your gradebook\n"
                    "Change- This command changes an existing grade in your gradebook\nEnd- This command ends the program\n";
