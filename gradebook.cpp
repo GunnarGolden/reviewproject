@@ -2,29 +2,30 @@
 #include <vector>
 #include <fstream>
 #include "gradebook.h"
-
+#include <string>
 
 Gradebook::Gradebook(){
 
 }
 
 //Calculates the total possible grade you could've gotten in every category
-void Gradebook::calcTotalPossible() {
+float Gradebook::calcTotalPossible() {
     int possible = 0;
     for (int i = 0; i < grades.size(); i++) {
         possible += grades[i].totalPossibleCategory;
     }
     totalPossible = possible;
+    return totalPossible;
 }
 
 //Calculates your total grade from every category
-void Gradebook::calcTotalGrade() {
+float Gradebook::calcTotalGrade() {
     int total = 0;
     for (int i = 0; i < grades.size(); i++) {
         total += grades[i].totalGradeCategory;
     }
     totalGrade = total;
-
+    return totalPossible;
 }
 
 //Gets the category titles and grades from given fileName, and updates the Gradebook and makes Categories based on them.
@@ -91,20 +92,36 @@ void Gradebook::outFile(std::string fileName){
     file << totalGrade << "/" << totalPossible << std::endl;
     file.close();
 }
-//Get the grade of a single grade from gradebook
+
+// function gives you the grade you have in a given category and assignment number
 void Gradebook::getOneGrade(std::string category, int assignmentNum){
-    int i = 0;
-    while(grades[i].title != category)
-    {
-        i++;
+    int num = 0;
+    for (int i = 0;i < grades.size(); i++) {
+        if (grades[i].title == category) {
+            num = i;
+            break;
+        }
     }
     std::string assignment = category + " " + std::to_string(assignmentNum);
 
-    std::cout << "Your grade for " << assignment << " is " << grades[i].categoryGrades[i + assignmentNum] << std::endl;
+    std::cout << "Your grade for " << assignment << " is " << grades[num].categoryGrades[assignmentNum-1] << std::endl;
 }
 
+//function gives you all grades from the category and category total
 void Gradebook::getCategoryGrade(std::string category){
-
+    int num = 0;
+    for (int i = 0;i < grades.size(); i++) {
+        if (grades[i].title == category) {
+            num = i;
+            break;
+        }
+    }
+    int totalC;
+    for(int j = 0; j < grades[num].categoryGrades.size(); j++)
+    {
+        totalC = totalC + stoi(grades[num].categoryGrades[j]);
+    }
+    float categoryGrade = totalC /
 }
 
 //add grade into the gradebook
@@ -118,7 +135,7 @@ void Gradebook::addGrade(std::string Category, int index,std::string Grade){
         }
     }
     //insert function allows us to insert the grade we want into the grades vector and pushes everything else back.
-    grades[num].categoryGrades.insert(grades[num].categoryGrades.begin()  + index, Grade);
+    grades[num].categoryGrades.insert(grades[num].categoryGrades.begin()  + index - 1, Grade);
 }
 //changes grade of an already existing grade
 void Gradebook::changeGrade(std::string Category, int index, std::string Grade) {
@@ -131,5 +148,5 @@ void Gradebook::changeGrade(std::string Category, int index, std::string Grade) 
         }
     }
     //use the num variable to change the existing grade into the new grade.
-    grades[num].categoryGrades[index]=Grade;
+    grades[num].categoryGrades[index - 1] = Grade;
 }
