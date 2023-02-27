@@ -91,23 +91,45 @@ void Gradebook::outFile(std::string fileName){
     file << totalGrade << "/" << totalPossible << std::endl;
     file.close();
 }
+//Get the grade of a single grade from gradebook
+void Gradebook::getOneGrade(std::string category, int assignmentNum){
+    int i = 0;
+    while(grades[i].title != category)
+    {
+        i++;
+    }
+    std::string assignment = category + " " + std::to_string(assignmentNum);
 
-void Gradebook::getOneGrade(int category, int assignmentNum){
+    std::cout << "Your grade for " << assignment << " is " << grades[i].categoryGrades[i + assignmentNum] << std::endl;
+}
+
+void Gradebook::getCategoryGrade(std::string category){
 
 }
 
-void Gradebook::getGrades(){
-
+//add grade into the gradebook
+void Gradebook::addGrade(std::string Category, int index,std::string Grade){
+    //num variable is a temp variable used to keep track of where the specific category is in the grade vector. We then use this to determine where we are inserting our grade.
+    int num = 0;
+    for (int i = 0;i < grades.size(); i++) {
+        if (grades[i].title == Category) {
+            num = i;
+            break;
+        }
+    }
+    //insert function allows us to insert the grade we want into the grades vector and pushes everything else back.
+    grades[num].categoryGrades.insert(grades[num].categoryGrades.begin()  + index, Grade);
 }
-
-void Gradebook::getCategoryGrade(int category){
-
-}
-
-void Gradebook::addGrade(int grade){
-
-}
-
-void Gradebook::changeGrade(int category, int assignmentNum, int newGrade){
-
+//changes grade of an already existing grade
+void Gradebook::changeGrade(std::string Category, int index, std::string Grade) {
+    //num variable is a temp variable used to keep track of where the specific category is in the grade vector. We then use this to determine where we are changing our grade.
+    int num=0;
+    for (int i = 0;i < grades.size(); i++) {
+        if (grades[i].title == Category) {
+            num = i;
+            break;
+        }
+    }
+    //use the num variable to change the existing grade into the new grade.
+    grades[num].categoryGrades[index]=Grade;
 }
