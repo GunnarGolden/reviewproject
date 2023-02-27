@@ -18,11 +18,10 @@ public:
     void calcTotalGrade();
     void inFile(std::string fileName);
     void outFile(std::string fileName);
-    void getOneGrade(int category, int assignmentNum);
-    void getGrades();
-    void getCategoryGrade(int category);
-    void addGrade(int grade);
-    void changeGrade(int category, int assignmentNum, int newGrade);
+    void getOneGrade(std::string category, int assignmentNum);
+    void getCategoryGrade(std::string category);
+    void addGrade(std::string Category, int index,std::string Grade);
+    void changeGrade(std::string Category, int index, std::string Grade);
 
 
 
