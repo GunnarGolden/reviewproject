@@ -17,6 +17,13 @@ float Gradebook::calcTotalPossible() {
     totalPossible = possible;
     return totalPossible;
 }
+float Gradebook::test() {
+    for (int i = 0; i < grades.size(); i++) {
+        for (int j = 0; j < grades.size(); i++) {
+            std::cout << grades[i].categoryGrades[j];
+        }
+    }
+}
 
 //Calculates your total grade from every category
 float Gradebook::calcTotalGrade() {
@@ -121,7 +128,7 @@ void Gradebook::getCategoryGrade(std::string category){
     {
         totalC = totalC + stoi(grades[num].categoryGrades[j]);
     }
-    float categoryGrade = totalC /
+    float categoryGrade = totalC ;
 }
 
 //add grade into the gradebook
