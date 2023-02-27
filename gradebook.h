@@ -22,10 +22,9 @@ public:
     void getCategoryGrade(std::string category);
     void addGrade(std::string Category, int index,std::string Grade);
     void changeGrade(std::string Category, int index, std::string Grade);
-    float test();
 
 
 
-    };
+};
 
 #endif
