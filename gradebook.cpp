@@ -25,7 +25,7 @@ float Gradebook::calcTotalGrade() {
         total += grades[i].totalGradeCategory;
     }
     totalGrade = total;
-    return totalPossible;
+    return totalGrade;
 }
 
 //Gets the category titles and grades from given fileName, and updates the Gradebook and makes Categories based on them.
