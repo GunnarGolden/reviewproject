@@ -87,9 +87,13 @@ void Gradebook::outFile(std::string fileName){
             file << grades[i].categoryGrades[j] << std::endl;
         }
     }
-    //Add total to the end
+    //convert totalGrade and totalPossible to float to get percentage
+    float total = totalGrade;
+    float possible = totalPossible;
+    float percentage = floor((total/possible) * 100);
+    //Add Total to the end
     file << "Total:" << std::endl;
-    file << totalGrade << "/" << totalPossible << std::endl;
+    file << percentage << " (" << totalGrade << "/" << totalPossible << ")" << std::endl;
     file.close();
 }
 
