@@ -3,6 +3,7 @@
 #include <fstream>
 #include "gradebook.h"
 #include <string>
+#include <cmath>
 
 Gradebook::Gradebook(){
 
