@@ -9,7 +9,6 @@ int main(int argc, char* argv[]) {
     std::string input;
     std::cout<<"Welcome to your gradebook. ";
     while (input != "end"){
-        mainGradebook.test();
         std::cout<<"Here are your possible commands:\nGrade- This command gives you your whole grade in the class. \nCategory- This commands gives you your grade in a specific category\n"
                    "Specific- This command gives you a single grade from a specific category and assignment\nAdd- This command adds a grade to your gradebook\n"
                    "Change- This command changes an existing grade in your gradebook\nEnd- This command ends the program\n";
@@ -22,10 +21,10 @@ int main(int argc, char* argv[]) {
         if (input == "grade"){
             std::cout<<"Showing grade now: " << std::endl;
             float grade = mainGradebook.calcTotalGrade() / mainGradebook.calcTotalPossible();
-            grade = grade;
+            grade = grade * 100;
             std::cout<<grade<<"\n";
         }
-        //
+            //
         else if (input == "category"){
             std::string category;
             std::cout << "Which category would you like to find?" << std::endl;
@@ -66,7 +65,7 @@ int main(int argc, char* argv[]) {
             std::cout<<"Which Project, Assignment, or Lab number would you like to change? \n";
             std::cin>>index;
             //get grade and insert it into gradebook
-            std::string Grade="";
+            std::string Grade ="";
             std::cout<<"What is the grade you would like to change? \n";
             std::cin>>Grade;
             mainGradebook.changeGrade( Category, index,  Grade);
