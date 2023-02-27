@@ -96,6 +96,7 @@ void Gradebook::outFile(std::string fileName){
 // function gives you the grade you have in a given category and assignment number
 void Gradebook::getOneGrade(std::string category, int assignmentNum){
     int num = 0;
+    category[0] = toupper(category[0]);
     for (int i = 0;i < grades.size(); i++) {
         if (grades[i].title == category) {
             num = i;
@@ -110,7 +111,8 @@ void Gradebook::getOneGrade(std::string category, int assignmentNum){
 //function gives you all grades from the category and category total
 void Gradebook::getCategoryGrade(std::string category){
     int num = 0;
-    for (int i = 0;i < grades.size(); i++) {
+    category[0] = toupper(category[0]);
+    for (int i = 0 ; i < grades.size() ; i++) {
         if (grades[i].title == category) {
             num = i;
             break;
@@ -123,20 +125,18 @@ void Gradebook::getCategoryGrade(std::string category){
         totalC = totalC + stoi(grades[num].categoryGrades[j]);
         std::cout<<category<<" "<<j+1<<": "<<grades[num].categoryGrades[j]<<"\n";
     }
-    if (category == "lab"){
-        total = grades[num].categoryGrades.size() * 20;
-    }
     float categoryGrade = totalC;
     std::cout<<category<<" total grade: "<<categoryGrade<<"\n";
 
 }
 
 //add grade into the gradebook
-void Gradebook::addGrade(std::string Category, int index,std::string Grade){
+void Gradebook::addGrade(std::string category, int index,std::string Grade){
     //num variable is a temp variable used to keep track of where the specific category is in the grade vector. We then use this to determine where we are inserting our grade.
     int num = 0;
+    category[0] = toupper(category[0]);
     for (int i = 0;i < grades.size(); i++) {
-        if (grades[i].title == Category) {
+        if (grades[i].title == category) {
             num = i;
             break;
         }
@@ -145,11 +145,12 @@ void Gradebook::addGrade(std::string Category, int index,std::string Grade){
     grades[num].categoryGrades.insert(grades[num].categoryGrades.begin()  + index - 1, Grade);
 }
 //changes grade of an already existing grade
-void Gradebook::changeGrade(std::string Category, int index, std::string Grade) {
+void Gradebook::changeGrade(std::string category, int index, std::string Grade) {
     //num variable is a temp variable used to keep track of where the specific category is in the grade vector. We then use this to determine where we are changing our grade.
     int num=0;
+    category[0] = toupper(category[0]);
     for (int i = 0;i < grades.size(); i++) {
-        if (grades[i].title == Category) {
+        if (grades[i].title == category) {
             num = i;
             break;
         }
