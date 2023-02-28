@@ -49,4 +49,8 @@ void Gradebook::changeGrade(int category, int assignmentNum, int newGrade){
   //replace it with new Grade
 }
 ```
+Compiling the code:
+In order to compile the code, you must insert the text file you want as a command line argument. If you are manually compiling, you must use:
+g++ main.cpp gradebook.cpp category.cpp
+then use ./a.out textfilename.txt
 
