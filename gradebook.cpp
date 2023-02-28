@@ -156,6 +156,11 @@ void Gradebook::addGrade(std::string category, int index,std::string Grade){
             break;
         }
     }
+    //Recalculate Total Grade and total category grade.
+    grades[num].calcTotalGrade();
+    grades[num].calcTotalPossible();
+    calcTotalGrade();
+    calcTotalPossible();
     //insert function allows us to insert the grade we want into the grades vector and pushes everything else back.
     grades[num].categoryGrades.insert(grades[num].categoryGrades.begin()  + index - 1, Grade);
 }
@@ -170,6 +175,11 @@ void Gradebook::changeGrade(std::string category, int index, std::string Grade) 
             break;
         }
     }
+    //Recalculate Total Grade and total category grade.
+    grades[num].calcTotalGrade();
+    grades[num].calcTotalPossible();
+    calcTotalGrade();
+    calcTotalPossible();
     //use the num variable to change the existing grade into the new grade.
     grades[num].categoryGrades[index - 1] = Grade;
 }
