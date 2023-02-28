@@ -12,20 +12,24 @@ Gradebook::Gradebook(){
 //Calculates the total possible grade you could've gotten in every category
 float Gradebook::calcTotalPossible() {
     int possible = 0;
+    //add to total from totalPossibleCategory
     for (int i = 0; i < grades.size(); i++) {
         possible += grades[i].totalPossibleCategory;
     }
     totalPossible = possible;
+    //return total possible
     return totalPossible;
 }
 
 //Calculates your total grade from every category
 float Gradebook::calcTotalGrade() {
     int total = 0;
+    //add to total from totalGradeCategory
     for (int i = 0; i < grades.size(); i++) {
         total += grades[i].totalGradeCategory;
     }
     totalGrade = total;
+    //return total grade
     return totalGrade;
 }
 
@@ -118,21 +122,25 @@ void Gradebook::getOneGrade(std::string category, int assignmentNum){
 //function gives you all grades from the category and category total
 void Gradebook::getCategoryGrade(std::string category){
     int num = 0;
+    //make sure the formatting is the same
     category[0] = toupper(category[0]);
+    //loop through until you find the title that matches the category you want
     for (int i = 0 ; i < grades.size() ; i++) {
         if (grades[i].title == category) {
             num = i;
             break;
         }
     }
-    int totalC = 0;
-    int total = 0;
-    for(int j = 0; j < grades[num].categoryGrades.size(); j++)
-    {
+    float totalC = 0;
+    //loop through and add all the points you got to totalC
+    for(int j = 0; j < grades[num].categoryGrades.size(); j++){
         totalC = totalC + stoi(grades[num].categoryGrades[j]);
         std::cout<<category<<" "<<j+1<<": "<<grades[num].categoryGrades[j]<<"\n";
     }
-    float categoryGrade = totalC ;
+    //divide it by possible points and multiply it by 100
+    float categoryGrade = totalC/grades[num].totalPossibleCategory ;
+    categoryGrade = categoryGrade * 100;
+    //print
     std::cout<<category<<" total grade: "<<categoryGrade<<"\n";
 
 }
