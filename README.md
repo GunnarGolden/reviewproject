@@ -50,16 +50,24 @@ void Gradebook::changeGrade(int category, int assignmentNum, int newGrade){
 }
 ```
 Compiling the code:
+
 In order to compile the code, you must insert the text file you want as a command line argument. If you are manually compiling, you must use:
 g++ main.cpp gradebook.cpp category.cpp, then use ./a.out textfilename.txt. If you are just using the play button on cLion, click edit configuration and add
 textfilename.txt under executable, then press the play button. The text file should begin with a category title, the an a list of grades in the format "[your grade]/[total possible]".
 To begin a new category, simply enter a category title in the next line and the grades for that category. See the sample textfiles provided with the program for example.
 The program has a number of commands which the user can run. A list of these commands are also given in the program itself when it is ran, but they are:
+
 Grade, which gives your overall grade for the course.
+
 Category, which gives you all the grades in a category and it's overall grade.
+
 Specific, which prompts you for an index and category to give you the grade of a category at that index.
+
 Add, which allows you to add a grade to your gradebook
+
 Change, which allows you to alter an existing grade.
+
 End, which ends the program.
+
 Any changes you make are saved back to the given textfile. Additionally, a final total grade is added to the end of the textfile automatically when you close the program.
 And that is all it takes to run the code. You should find it easy and specific, as  it tells you exactly what it wants at all inputs. 
