@@ -103,6 +103,7 @@ void Gradebook::getOneGrade(std::string category, int assignmentNum){
 
     int num = 0;
     category[0] = toupper(category[0]);
+    //find the index of the category which is num
     for (int i = 0;i < grades.size(); i++) {
         if (grades[i].title == category) {
             num = i;
@@ -110,7 +111,7 @@ void Gradebook::getOneGrade(std::string category, int assignmentNum){
         }
     }
     std::string assignment = category + " " + std::to_string(assignmentNum);
-
+    //output the assignemnt with the grades
     std::cout << "Your grade for " << assignment << " is " << grades[num].categoryGrades[assignmentNum-1] << std::endl;
 }
 
