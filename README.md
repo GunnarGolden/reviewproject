@@ -47,4 +47,6 @@ void Gradebook::changeGrade(int category, int assignmentNum, int newGrade){
   //loop through and find category
   //find assignment number (given assignment number - 1)
   //replace it with new Grade
-}```
+}
+```
+
